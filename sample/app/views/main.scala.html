@@ -1,0 +1,34 @@
+@(title: String)(content: Html)
+
+@import views._
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Short message board - @title</title>
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("css/bootstrap.css")">
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("css/bootstrap-responsive.css")">
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("css/docs.css")">
+    <script src="@routes.Assets.at("javascripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+  </head>
+  <body>
+  @html.navigation()
+  <div class="container">
+    @content
+  </div>
+  <script src="@routes.Assets.at("js/jquery.js")"></script>
+  <script src="@routes.Assets.at("js/bootstrap-transition.js")"></script>
+  <script src="@routes.Assets.at("js/bootstrap-alert.js")"></script>
+  <script src="@routes.Assets.at("js/bootstrap-modal.js")"></script>
+  <script src="@routes.Assets.at("js/bootstrap-dropdown.js")"></script>
+  <script src="@routes.Assets.at("js/bootstrap-scrollspy.js")"></script>
+  <script src="@routes.Assets.at("js/bootstrap-tab.js")"></script>
+  <script src="@routes.Assets.at("js/bootstrap-tooltip.js")"></script>
+  <script src="@routes.Assets.at("js/bootstrap-popover.js")"></script>
+  <script src="@routes.Assets.at("js/bootstrap-button.js")"></script>
+  <script src="@routes.Assets.at("js/bootstrap-collapse.js")"></script>
+  <script src="@routes.Assets.at("js/bootstrap-carousel.js")"></script>
+  <script src="@routes.Assets.at("js/bootstrap-typeahead.js")"></script>
+  </body>
+</html>

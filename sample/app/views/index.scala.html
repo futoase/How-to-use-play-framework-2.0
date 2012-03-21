@@ -1,0 +1,51 @@
+@(title: String, message: List[Map[Symbol,Any]], messageForm: Form[Message])(implicit flash: play.api.mvc.Flash)
+
+@import helper._
+
+@main("messages") {
+  <div style="margin-bottom: 15px;">
+    <h1>Short message board</h1>
+  </div>
+  @flash.get("success").map { message =>
+    <div class="alert alert-success">
+    publish ok!
+    </div>
+  }
+
+  @form(action=routes.Application.save(),
+  'class -> "well"){
+  <fieldset>
+    @inputText(messageForm("name"), 
+               '_label -> "name",
+               'class -> "inputmedium" 
+              )
+    @textarea(messageForm("message"), 
+              '_label -> "message",
+              '_help -> "message is required",
+              'rows -> 5,
+              'cols -> 200,
+              'class -> "input-xxlarge")
+  </fieldset>
+
+  <div>
+    <input type="submit" class="btn btn-primary" value="publish">
+  </div>
+  }
+
+  @message.map { l =>
+  <div class="row">
+    <div class="span9">
+    <dl>
+      <dt>
+      @l('name)<span style="margin-left: 10px;">created:</span>@l('created_at)
+      </dt>
+      <dd>
+      @l('message)
+      </dd>
+    </dl>
+  </div>
+  </div>
+  }
+  </dl>
+
+}
