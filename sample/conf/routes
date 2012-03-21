@@ -6,7 +6,8 @@
 GET     /                           controllers.Application.index
 
 # Search result
-GET     /search_result              controllers.Application.search_result
+GET      /search                    controllers.Application.index
+POST     /search                    controllers.Application.search
 
 # update message
 POST    /save                       controllers.Application.save

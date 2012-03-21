@@ -8,11 +8,11 @@ import anorm.SqlParser._
 
 import java.util.{Date}
 
-case class Search(word: String);
+case class Search(query: String);
 
 object Search {
   
-  def get(word: String): List[Map[Symbol,Any]] = {
+  def get(search: Search): List[Map[Symbol,Any]] = {
     DB.withConnection("simpledev") { implicit connection =>
       SQL(
         """
@@ -22,8 +22,8 @@ object Search {
              WHERE `name` LIKE {name} 
                 OR `message` LIKE {message}
         """
-      ).on("name" -> ("%"+word+"%"),
-           "message" -> ("%"+word+"%")
+      ).on("name" -> ("%"+search.query+"%"),
+           "message" -> ("%"+search.query+"%")
       )().map(row =>
         Map('id -> row[Int]("id"),
             'name -> row[String]("name"),

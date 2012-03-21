@@ -12,7 +12,7 @@ class SearchSpec extends Specification {
   "Search Model" should {
     "be search name" in {
       running(FakeApplication(additionalConfiguration = inMemoryDatabase("simpledev"))){
-        val result = Search.get("keiji matsuzaki")
+        val result = Search.get(new Search("keiji matsuzaki"))
         result.map { r =>
           r must haveKey('name)
           r must haveKey('message)
@@ -23,7 +23,7 @@ class SearchSpec extends Specification {
 
     "be search message" in {
       running(FakeApplication(additionalConfiguration = inMemoryDatabase("simpledev"))){
-        val result = Search.get("テスト")
+        val result = Search.get(new Search("テスト"))
         result.map { r =>
           r must haveKey('name)
           r must haveKey('message)

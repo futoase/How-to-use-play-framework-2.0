@@ -1,13 +1,25 @@
+@import helper._
+@import helper.twitterBootstrap._
+
+@import controllers.Application.searchForm
+
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
       <a class="brand" href="./">Message Board</a>
       <div class="nav-collapse">
-      <div class="nav">
+      <ul class="nav">
         <li class="">
           <a href="./">Top</a>
         </li>
-      </div>
+      </ul>
+      @form(action=routes.Application.search(),
+            'class -> "navbar-search pull-left"){
+        @inputText(searchForm("query"),
+          '_label -> "",
+          'class -> "search-query span2"
+        )
+      }
       </div>
     </div>
   </div>

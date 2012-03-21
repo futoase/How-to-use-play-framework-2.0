@@ -4,7 +4,7 @@
 
 @main("messages") {
   <div style="margin-bottom: 15px;">
-    <h1>Short message board</h1>
+    <h1>Simple message board</h1>
   </div>
   @flash.get("success").map { message =>
     <div class="alert alert-success">
@@ -13,7 +13,7 @@
   }
 
   @form(action=routes.Application.save(),
-  'class -> "well"){
+       'class -> "well"){
   <fieldset>
     @inputText(messageForm("name"), 
                '_label -> "name",
@@ -35,15 +35,15 @@
   @message.map { l =>
   <div class="row">
     <div class="span9">
-    <dl>
-      <dt>
-      @l('name)<span style="margin-left: 10px;">created:</span>@l('created_at)
-      </dt>
-      <dd>
-      @l('message)
-      </dd>
-    </dl>
-  </div>
+      <dl>
+        <dt>
+        @l('name)<span style="margin-left: 10px;">created:</span>@l('created_at)
+        </dt>
+        <dd>
+        @l('message)
+        </dd>
+      </dl>
+    </div>
   </div>
   }
   </dl>

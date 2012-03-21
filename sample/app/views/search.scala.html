@@ -1,0 +1,24 @@
+@(title: String, result: List[Map[Symbol,Any]])
+
+@import helper._
+
+@main("search") {
+  <div style="margin-bottom: 15px;">
+    <h1>Simple message board - @title</h1>
+  </div>
+
+  @result.map { r =>
+  <div class="row">
+    <div class="span9">
+      <dl>
+        <dt>
+        @r('name)<span style="margin-left: 10px;">created:</span>@r('created_at)
+        </dt>
+        <dd>
+        @r('message)
+        </dd>
+      </dl>
+    </div>
+  </div>
+  }
+}

@@ -46,10 +46,9 @@ object Application extends Controller {
     searchForm.bindFromRequest.fold(
       fromWithErrors => BadRequest(html.index("Index", Message.get(), messageForm)),
       search => {
-        Redirect(routes.Application.search_result())        
+        val result = Search.get(search)
+        Ok(html.search("Search", result))
       }
     )
   }
-
-  def search_result = TODO;
 }
