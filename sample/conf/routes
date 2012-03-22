@@ -5,6 +5,10 @@
 # Home page
 GET     /                           controllers.Application.index
 
+# Search
+
+POST    /search                     controllers.Application.search
+
 # Search result
 GET      /search                    controllers.Application.index
 POST     /search                    controllers.Application.search
