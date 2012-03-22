@@ -14,17 +14,17 @@ class WebFrontSpec extends Specification {
         browser.goTo("http://localhost:3333/")
 
         // confirm title text
-        browser.$("title").first.getText must equalTo("Short message board - messages")
+        browser.$("title").first.getText must equalTo("Simple message board - messages")
         
         // click publish button.
         browser.$("input[type=\"submit\"]").click()
-        browser.$("title").first.getText must equalTo("Short message board - messages")
+        browser.$("title").first.getText must equalTo("Simple message board - messages")
 
         // publish message
         browser.$("input[type=\"text\"][id=\"name\"]").text("テスト")
         browser.$("textarea[id=\"message\"]").text("テスト入力")
         browser.$("input[type=\"submit\"]").click()
-        browser.$("title").first.getText must equalTo("Short message board - messages")
+        browser.$("title").first.getText must equalTo("Simple message board - messages")
 
         // confirm message of publish ok!
         browser.$("div.alert.alert-success").first.getText must equalTo("publish ok!")

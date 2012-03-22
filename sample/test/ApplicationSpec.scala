@@ -19,7 +19,7 @@ class ApplicationSpec extends Specification {
         val index = routeAndCall(FakeRequest(GET, "/")).get
         status(index) must equalTo(OK)
         contentType(index) must beSome.which(_ == "text/html")
-        contentAsString(index) must contain("Short message board")
+        contentAsString(index) must contain("Simple message board")
       }
     }
   }
