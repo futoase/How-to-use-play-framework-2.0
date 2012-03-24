@@ -22,8 +22,10 @@ application.langs="en"
 # You can declare as many datasources as you want.
 # By convention, the default datasource is named `default`
 #
-db.simpledev.driver=org.h2.Driver
-db.simpledev.url="jdbc:h2:mem:simpledev"
+db.simpledev.driver=com.mysql.jdbc.Driver
+db.simpledev.url="jdbc:mysql://localhost/simpledev"
+db.simpledev.user=play
+db.simpledev.password=play
 
 # Evolutions
 # ~~~~~
