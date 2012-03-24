@@ -39,7 +39,7 @@ object Message extends TimeFormat{
     } 
   }
 
-  def get_in_message(message: String): List[Map[Symbol,Any]] = {
+  def getInMessage(message: String): List[Map[Symbol,Any]] = {
     DB.withConnection("simpledev") {implicit connection =>
       SQL(
         """
@@ -59,7 +59,7 @@ object Message extends TimeFormat{
     }
   }
 
-  def get_by_name(name: String): List[Map[Symbol,Any]] = {
+  def getByName(name: String): List[Map[Symbol,Any]] = {
     DB.withConnection("simpledev") {implicit connection =>
       SQL(
         """
