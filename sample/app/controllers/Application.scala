@@ -11,7 +11,7 @@ import models._
 
 object Application extends Controller {
 
-  val siteHome = Redirect(routes.Application.index())
+  val siteHome = Redirect(routes.Application.index(page=1))
 
   val searchForm = Form(
     mapping(
@@ -26,13 +26,13 @@ object Application extends Controller {
     )(Message.apply)(Message.unapply)
   )
 
-  def index = Action { implicit request =>
-    Ok(html.index("Index", Message.get(), messageForm))
+  def index(page: Int=1) = Action { implicit request =>
+    Ok(html.index("Index", Message.getWithRange(page), messageForm, Message.count().toInt))
   }
 
   def save = Action { implicit request =>
     messageForm.bindFromRequest.fold(
-      fromWithErrors => BadRequest(html.index("Index", Message.get(), messageForm)),
+      fromWithErrors => BadRequest(html.index("Index", Message.get(), messageForm, Message.count().toInt)),
       message => {
         Message.insert(message)
         siteHome.flashing(
@@ -44,7 +44,7 @@ object Application extends Controller {
 
   def search = Action { implicit request =>
     searchForm.bindFromRequest.fold(
-      fromWithErrors => BadRequest(html.index("Index", Message.get(), messageForm)),
+      fromWithErrors => BadRequest(html.index("Index", Message.get(), messageForm, Message.count().toInt)),
       search => {
         val result = Search.get(search)
         Ok(html.search("Search", result))
