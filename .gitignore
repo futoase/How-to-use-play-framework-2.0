@@ -4,3 +4,5 @@ sample/project/project
 sample/project/target
 sample/target
 sample/tmp
+docs/reference/_build
+
