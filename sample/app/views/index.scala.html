@@ -1,6 +1,7 @@
-@(title: String, message: List[Map[Symbol,Any]], messageForm: Form[Message])(implicit flash: play.api.mvc.Flash)
+@(title: String, message: List[Map[Symbol,Any]], messageForm: Form[Message], messageCount: Int)(implicit flash: play.api.mvc.Flash)
 
 @import helper._
+@import views._
 
 @main("messages") {
   <div style="margin-bottom: 15px;">
@@ -48,4 +49,5 @@
   }
   </dl>
 
+  @html.pagination("index", messageCount / 10)
 }

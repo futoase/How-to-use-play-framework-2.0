@@ -1,0 +1,15 @@
+@(routingType: String, messageCount: Int)
+
+@messageCount match {
+  case x if x > 0 => {
+    <div class="pagination">
+    <ul>
+    @for(i <- 1 to x+1) {
+      <li><a href="/@i">@i</a></li>
+    }
+    </ul>
+    </div>
+  }
+  case _ => {
+  }
+}

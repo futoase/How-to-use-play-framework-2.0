@@ -20,6 +20,16 @@ case class Message (name: String, message: String)
 
 object Message extends TimeFormat{
 
+  def count(): Long = {
+    DB.withConnection("simpledev") { implicit connection =>
+      SQL(
+        """
+          SELECT COUNT(`id`) as `count` FROM `Messages`;
+        """
+      ).apply().head[Long]("count")
+    }
+  }
+
   def get(): List[Map[Symbol,Any]] = {
     DB.withConnection("simpledev") { implicit connection =>
       SQL(
@@ -37,6 +47,32 @@ object Message extends TimeFormat{
         )
       ).toList
     } 
+  }
+
+  def getWithRange(page: Int): List[Map[Symbol,Any]] = {
+
+    val pageNo = page match {
+      case x if x > 0 => page
+      case _          => 1
+    }
+
+    DB.withConnection("simpledev") { implicit connection =>
+      SQL(
+        """
+          SELECT `id`, `name`, `message`, 
+                 `created_at`, `updated_at`
+            FROM `Messages` ORDER BY `updated_at` DESC
+            LIMIT {page},10;
+        """
+      ).on("page" -> (pageNo - 1) * 10)().map(row => 
+        Map('id -> row[Int]("id"), 
+            'name -> row[String]("name"),
+            'message -> row[String]("message"), 
+            'created_at -> date_convert(row[Date]("created_at")),
+            'updated_at -> date_convert(row[Date]("updated_at"))
+        )
+      ).toList
+    }
   }
 
   def getInMessage(message: String): List[Map[Symbol,Any]] = {

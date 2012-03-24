@@ -3,14 +3,11 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index
-
-# Search
-
-POST    /search                     controllers.Application.search
+GET     /                                        controllers.Application.index(page: Int ?= 1)
+GET     /$page<[0-9]+>                           controllers.Application.index(page: Int)
 
 # Search result
-GET      /search                    controllers.Application.index
+GET      /search                    controllers.Application.index(page: Int=1)
 POST     /search                    controllers.Application.search
 
 # update message
