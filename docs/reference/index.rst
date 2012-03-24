@@ -6,8 +6,8 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   how_to_install
-   initial_create_application
+   subdocs/how_to_install
+   subdocs/initial_create_application
    
 
 
