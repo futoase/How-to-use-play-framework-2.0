@@ -22,7 +22,7 @@ class MessageSpec extends Specification {
 
     "be get record of user name keiji matsuzaki" in {
       running(FakeApplication(additionalConfiguration = inMemoryDatabase("simpledev"))){
-        val message = Message.get_by_name("keiji matsuzaki")
+        val message = Message.getByName("keiji matsuzaki")
         message.map { m =>
           m must haveKey('name)
           m must haveKey('message)
@@ -34,7 +34,7 @@ class MessageSpec extends Specification {
 
     "be get record of message" in {
       running(FakeApplication(additionalConfiguration = inMemoryDatabase("simpledev"))){
-        val message = Message.get_in_message("テスト")
+        val message = Message.getInMessage("テスト")
         message.map { m =>
           m must haveKey('name)
           m must haveKey('message)
