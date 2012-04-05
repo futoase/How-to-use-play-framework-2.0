@@ -1,5 +1,5 @@
-Welcome to How to use playframework 2.0's documentation!
-========================================================
+playframework 2.0 を使ってみよう
+================================
 
 Contents:
 
